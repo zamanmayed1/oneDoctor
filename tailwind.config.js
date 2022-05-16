@@ -3,7 +3,14 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'bannerbg': "url('https://i.ibb.co/NYbGY65/bg.png')",
+        'apbg': "url('https://i.ibb.co/3SdTDpJ/appointment.png')",
+        'testimbg': "url('https://i.ibb.co/xCXqV1j/Mask-Group-7-2x-1.png')",
+        'footerbg': "url('https://i.ibb.co/3k2CJRt/repeated-square.webp')",
+      }
+    },
   },
   daisyui: {
     themes: [
