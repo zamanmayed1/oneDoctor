@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import auth from '../../Firebase/Fireabse.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 const Myappoinment = () => {
   const [user] = useAuthState(auth)
   const [appoinments, setAppoinment] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
-    fetch(`http://localhost:5000/mybooking?email=${user?.email}`, {
+    fetch(`https://stark-bastion-02508.herokuapp.com/mybooking?email=${user?.email}`, {
       method: 'GET'
       ,
       headers: {
@@ -16,13 +16,13 @@ const Myappoinment = () => {
       }
     })
       .then(res => {
-       
+
         if (res.status === 401 || res.status === 403) {
           signOut(auth)
           localStorage.removeItem('accessToken')
-            navigate('/')
+          navigate('/')
         }
-        return  res.json()
+        return res.json()
       })
       .then(data => setAppoinment(data))
   }, [])
@@ -30,7 +30,7 @@ const Myappoinment = () => {
     <div>
       <h2 className='text-3xl font-bold text-purple-700'>My Booked Appoinment {appoinments?.length} </h2>
       <div className="grid md:grid-cols-3 gap-20 mt-4 md:hidden">
-        
+
         {
           appoinments?.map(a => <div className=' shadow-lg h-[150px]  border-l-8 relative three rounded-md p-4' key={a._id}>
             <h2 className='text-center text-green-600 text-xl font-bold mt-5'>{a.tratment}</h2>
@@ -56,7 +56,7 @@ const Myappoinment = () => {
           <tbody>
             {
               appoinments?.map(a =>
-                <tr>
+                <tr key={a._id}>
 
                   <td>{a.tratment}</td>
                   <td>{a.date}</td>

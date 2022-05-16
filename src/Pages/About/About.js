@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
     const deleteall = () => {
-        fetch('http://localhost:5000/deleteall', {
+        fetch('https://stark-bastion-02508.herokuapp.com/deleteall', {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

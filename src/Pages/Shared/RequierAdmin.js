@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import auth from '../../Firebase/Fireabse.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navigate, useLocation } from 'react-router-dom';
@@ -11,10 +11,11 @@ function RequierAdmin({ children }) {
     const [admin] = useAdmin(user)
     let location = useLocation();
 
-    if (!admin) {
-        signOut(auth)
-        return <Navigate to="/" state={{ from: location }} replace />;
-    }
+
+        if (!admin) {
+            return <Navigate to="/" state={{ from: location }} replace />;
+        }
+
 
     return children;
 }

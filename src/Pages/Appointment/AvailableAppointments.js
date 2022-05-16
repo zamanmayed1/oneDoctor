@@ -9,14 +9,14 @@ const AvailableAppointments = ({ date }) => {
     const formateddate = format(date, 'PP')
     
     useEffect(() => {
-        fetch(`http://localhost:5000/available?date=${formateddate}`)
+        fetch(`https://stark-bastion-02508.herokuapp.com/available?date=${formateddate}`)
             .then(res => res.json())
             .then(data => setServices(data))
 
     }, [services])
 
 //     const { isLoading, error, data:services } = useQuery(['available' , formateddate], () =>
-//     fetch(`http://localhost:5000/available?date=${formateddate}`).then(res =>
+//     fetch(`https://stark-bastion-02508.herokuapp.com/available?date=${formateddate}`).then(res =>
 //       res.json()
 //     )
 //   )

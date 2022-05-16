@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 function useAdmin(user) {
-    const [admin, setAdmin] = useState(false)
+    const [admin, setAdmin] = useState(true)
     useEffect(() => {
         const email = user?.email
-        fetch(`http://localhost:5000/admin/${email}`, {
+        fetch(`https://stark-bastion-02508.herokuapp.com/admin/${email}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

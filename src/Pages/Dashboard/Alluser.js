@@ -5,7 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const Alluser = () => {
     const { isLoading, error, data: users, refetch } = useQuery('user', () =>
-        fetch('http://localhost:5000/allusers', {
+        fetch('https://stark-bastion-02508.herokuapp.com/allusers', {
             method: 'GET',
             headers: {
                 'authorization': `Barer ${localStorage.getItem('accessToken')}`
@@ -15,7 +15,7 @@ const Alluser = () => {
 
 
     const makeAdmin = (email) => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://stark-bastion-02508.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Barer ${localStorage.getItem('accessToken')}`
@@ -62,10 +62,10 @@ const Alluser = () => {
                                     <td>{u.email}</td>
                                     <td>
 
-                                        {u.role !== 'admin' && <button onClick={() => makeAdmin(u?.email)} class="btn btn-xs">Make Admin</button>}
+                                        {u.role !== 'admin' && <button onClick={() => makeAdmin(u?.email)} className="btn btn-xs">Make Admin</button>}
 
                                     </td>
-                                    <td><button class="btn btn-xs bg-red-500">Delete</button></td>
+                                    <td><button className="btn btn-xs bg-red-500">Delete</button></td>
                                 </tr>
 
                             )

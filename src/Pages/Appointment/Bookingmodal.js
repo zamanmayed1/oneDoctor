@@ -21,7 +21,7 @@ const Bookingmodal = ({ option, date, setOption }) => {
             email: e.target.email.value,
             phone: e.target.phone.value,
         }
-        const url = 'http://localhost:5000/booking'
+        const url = 'https://stark-bastion-02508.herokuapp.com/booking'
         fetch(url, {
             method: 'POST',
             headers: {
